@@ -1,0 +1,138 @@
+body {
+	font-family:
+		LINE Seed JP_OTF,
+		sans-serif;
+}
+
+header {
+	color: #fff;
+	display: flex;
+	align-items: center;
+	padding-inline: 40px;
+	padding-block: 20px;
+	opacity: 0;
+	translate: 0 -100px;
+	animation: appear 1s 0.8s ease-in-out forwards;
+	animation .logo {
+		font-size: 20px;
+		font-weight: 900;
+	}
+	nav {
+		margin-left: auto;
+		ul {
+			display: flex;
+			align-items: center;
+			gap: 3em;
+			a {
+				font-size: 13px;
+				font-weight: 300;
+			}
+		}
+	}
+}
+@keyframes appear-header {
+	to {
+		translate: 0 0;
+		opacity: 1;
+	}
+}
+
+.fv {
+	height: 80dvh;
+	display: grid;
+	grid-template-rows: auto 1fr;
+	background:
+		linear-gradient(rgb(0 0 0 / 0.5), rgb(0 0 0 / 0.5)),
+		center / cover no-repeat
+			url(https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1200&q=80);
+	position: relative;
+	&::before {
+		content: "";
+		display: block;
+		background-color: black;
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		animation: clip-fv 1s forwards;
+	}
+	.hero {
+		color: #fff;
+		text-align: center;
+		display: grid;
+		place-items: center;
+		align-content: center;
+		position: relative;
+		h2 {
+			font-size: 4.5rem;
+			font-weight: 900;
+			line-height: 1.5;
+			display: grid;
+			gap: 0.5em;
+			span {
+				translate: 0 0.5em;
+				opacity: 0;
+				animation: appear 1s 0.8s cubic-bezier(0.17, 0.88, 0.44, 1) forwards;
+				display: block;
+				line-height: 1;
+				&:nth-child(2) {
+					animation-delay: 0.9s;
+				}
+			}
+		}
+	}
+	.text {
+		font-size: 1em;
+		color: #fff;
+		letter-spacing: 0.08em;
+		line-height: 2;
+		margin-top: 3em;
+		translate: 0 2em;
+		opacity: 0;
+		animation: appear 1s 0.8s ease-in-out forwards;
+	}
+	.scroll {
+		writing-mode: vertical-rl;
+		position: absolute;
+		inset: auto auto 0 2rem;
+		opacity: 0;
+		translate: -5rem;
+		animation: appear 1s 0.8s ease-in-out forwards;
+		a {
+			font-size: 14px;
+			display: grid;
+			grid-template-columns: auto 1fr;
+			align-items: center;
+			inline-size: 160px;
+			gap: 0.5em;
+			&::after {
+				content: "";
+				display: block;
+				background-image: linear-gradient(
+					to bottom,
+					rgb(255 255 255 / 1),
+					rgb(255 255 255 / 0)
+				);
+				block-size: 4px;
+			}
+		}
+	}
+}
+@keyframes appear {
+	to {
+		translate: 0 0;
+		opacity: 1;
+	}
+}
+@keyframes clip-fv {
+	from {
+		clip-path: inset(0 0 0 0);
+	}
+	to {
+		clip-path: inset(0 0 0 100%);
+	}
+}
+
+main {
+	background-color: #68818f;
+	min-height: 100dvh;
+}
